@@ -1,11 +1,10 @@
 import "./App.css";
+import { Playlist } from "./Components/Playlist";
 
 function App() {
 	return (
 		<>
-			<p className="read-the-docs">
-				Click on the Vite and React logos to learn more
-			</p>
+			<Playlist></Playlist>
 		</>
 	);
 }
