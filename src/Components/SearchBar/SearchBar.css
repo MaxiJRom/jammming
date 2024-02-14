@@ -1,0 +1,15 @@
+form {
+	width: clamp();
+	margin-block: 2rem;
+
+	* {
+		padding: 0.5rem 1.5rem;
+	}
+
+	[type="text"] {
+		margin-inline: 1rem;
+		min-width: 500px;
+	}
+	[type="submit"] {
+	}
+}

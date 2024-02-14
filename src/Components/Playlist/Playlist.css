@@ -1,0 +1,31 @@
+.playlist {
+	/* display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center; */
+	padding: 0.5rem 1rem;
+
+	.name-input {
+		background-color: transparent;
+		width: 90%;
+		text-align: center;
+		border: 0;
+		font-size: 1.5rem;
+		border-bottom: 1px solid #222;
+	}
+
+	.save-button {
+		background-color: #222;
+		color: #fcfcfc;
+		letter-spacing: 0.1em;
+		font-weight: 500;
+		padding: 0.3rem 0.9rem;
+		border: none;
+		cursor: pointer;
+	}
+
+	.save-button:active {
+		color: #222;
+		background-color: #fcfcfc;
+	}
+}
