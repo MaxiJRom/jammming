@@ -1,4 +1,5 @@
 .tracklist-container {
 	margin-block: 1rem;
-	/* width: 100%; */
+	flex: 1;
+	justify-self: flex-start;
 }

@@ -13,12 +13,14 @@
 	padding: 0;
 	margin: 0;
 
-	outline: 1px solid rgba(150, 150, 150, 0.5);
+	/* outline: 1px solid rgba(150, 150, 150, 0.5); */
 	font-family: "Poppins", sans-serif;
 }
 
 body {
-	background-color: #cfcfcf;
+	background: linear-gradient(#aaa, #888);
+	padding-inline: 1rem;
+	min-height: 100dvh;
 }
 
 #root {
@@ -33,13 +35,18 @@ main {
 }
 
 h1 {
-	margin-block: 1rem;
+	/* margin-block: 1rem; */
+	font-size: 3rem;
 }
 
 section {
-	flex: 1;
+	display: flex;
+	column-gap: 0.5rem;
+	align-items: baseline;
 
-	display: grid;
-	grid-template-columns: 50% 50%;
-	grid-auto-rows: 1fr;
+	> div {
+		flex: 1;
+		min-height: 50dvh;
+		background-color: #fcfcfc;
+	}
 }

@@ -3,44 +3,16 @@ import "./App.css";
 import { Playlist } from "./Components/Playlist/Playlist";
 import { SearchBar } from "./Components/SearchBar/SearchBar";
 import { SearchResults } from "./Components/SearchResults/SearchResults";
-import { getInfo } from "./helpers/getInfo";
+import { Spotify } from "./helpers/Spotify";
 
 function App() {
-	const [playlistName, setPlaylistName] = useState("New Playlist");
-	const [searchResult, setSearchResult] = useState([
-		{
-			song_name: "Por arriba por abajo",
-			artist: "ricky martin",
-			album: "vuelve",
-			id: 250,
-		},
-		{
-			song_name: "La copa de la vida",
-			artist: "ricky martin",
-			album: "vuelve",
-			id: 320,
-		},
-		{
-			song_name: "vuelve",
-			artist: "ricky martin",
-			album: "vuelve",
-			id: 480,
-		},
-	]);
-	const [playlistTracks, setPlaylistTracks] = useState([
-		{
-			song_name: "Té para tres",
-			artist: "soda stereo",
-			album: "cancion animal",
-			id: 3020,
-		},
-	]);
+	const [playlistName, setPlaylistName] = useState("");
+	const [searchResults, setSearchResults] = useState([]);
+	const [playlistTracks, setPlaylistTracks] = useState([]);
 
 	function handleNameChange(e) {
 		setPlaylistName(e.target.value);
 	}
-
-	// getInfo();
 
 	function handleAdd({ target }) {
 		const targetID = target.dataset.id;
@@ -48,7 +20,7 @@ function App() {
 		//verificar si el id del item clickeado coincide con alguno que ya este en la lista:
 		if (playlistTracks.some((track) => track.id == targetID)) return;
 
-		const trackToAdd = searchResult.filter((track) => track.id == targetID);
+		const trackToAdd = searchResults.filter((track) => track.id == targetID);
 		//sino agrega la cancion al playlistTracks
 		setPlaylistTracks((prev) => [...prev, ...trackToAdd]);
 	}
@@ -61,17 +33,31 @@ function App() {
 		]);
 	}
 
+	function handleOnSearch(term) {
+		Spotify.search(term).then((res) => setSearchResults(res));
+	}
+
+	function handleSave() {
+		const playlistUris = playlistTracks.map((track) => track.uri);
+
+		Spotify.savePlaylist(playlistName, "", playlistUris);
+
+		setPlaylistName("");
+		setPlaylistTracks([]);
+	}
+
 	return (
 		<main>
 			<h1>Jammming</h1>
-			<SearchBar />
+			<SearchBar onSearch={handleOnSearch} />
 			<section>
-				<SearchResults searchResult={searchResult} onAdd={handleAdd} />
+				<SearchResults searchResults={searchResults} onAdd={handleAdd} />
 				<Playlist
 					playlistName={playlistName}
 					onNameChange={handleNameChange}
 					playlistTracks={playlistTracks}
 					onRemove={handleRemove}
+					onSave={handleSave}
 				/>
 			</section>
 		</main>

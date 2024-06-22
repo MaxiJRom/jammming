@@ -5,9 +5,10 @@ import PropTypes from "prop-types";
 
 export function Playlist({
 	playlistName,
-	onNameChange,
 	playlistTracks,
+	onNameChange,
 	onRemove,
+	onSave,
 }) {
 	return (
 		<div className="playlist">
@@ -16,6 +17,8 @@ export function Playlist({
 				className="name-input"
 				value={playlistName}
 				onChange={onNameChange}
+				required
+				placeholder="Nombre de la playlist"
 			/>
 			<Tracklist
 				tracksArray={playlistTracks}
@@ -23,7 +26,9 @@ export function Playlist({
 				isRemoval={true}
 			/>
 
-			<button className="save-button">Save to Spotify</button>
+			<button className="save-button" onClick={onSave}>
+				Save to Spotify
+			</button>
 		</div>
 	);
 }
@@ -32,5 +37,6 @@ Playlist.propTypes = {
 	playlistName: PropTypes.string,
 	onNameChange: PropTypes.func,
 	onRemove: PropTypes.func,
+	onSave: PropTypes.func,
 	playlistTracks: PropTypes.array,
 };

@@ -3,6 +3,7 @@
 	border-radius: 0.5rem;
 	background-color: #ededed;
 	display: flex;
+	overflow: hidden;
 }
 
 .track-info {
@@ -23,7 +24,7 @@
 
 .track-button {
 	cursor: pointer;
-	padding-inline: 0.5rem;
+	padding-inline: 1rem;
 	font-weight: 900;
 	font-size: 1rem;
 	border: 0;

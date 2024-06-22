@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./SearchBar.css";
 
-export function SearchBar() {
+export function SearchBar({ onSearch }) {
 	const [term, setTerm] = useState("");
 
 	function handleChange({ target }) {
@@ -10,7 +10,7 @@ export function SearchBar() {
 
 	function handleSubmit(e) {
 		e.preventDefault();
-		setTerm("");
+		onSearch(term);
 	}
 
 	return (
@@ -22,6 +22,8 @@ export function SearchBar() {
 					id="search_term"
 					value={term}
 					onChange={handleChange}
+					placeholder="Artista o canción"
+					required
 				/>
 				<input type="submit" value="Buscar" />
 			</form>
