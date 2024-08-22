@@ -1,7 +1,7 @@
 const clientId = "db33c7bfce564b37a783a1700b518ab2";
 // var clientSecret = "0c734e107f58439f8f8a789c7a8eea25";
 // var url = "https://accounts.spotify.com/authorize";
-const redirectUri = "http://localhost:5173/";
+const redirectUri = "http://localhost:4173/";
 let accessToken;
 
 export const Spotify = {
