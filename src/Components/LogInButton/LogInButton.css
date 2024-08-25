@@ -1,0 +1,17 @@
+.log-in-button {
+  padding: 0.3rem 1.2rem;
+  min-width: 6rem;
+  font-weight: 900;
+  font-size: 1rem;
+  outline: 0;
+  border: 0;
+  border-radius: 0.3rem;
+  text-align: center;
+  margin-left: auto;
+}
+
+.log-in-button.active {
+  background-color: #503bb8;
+  cursor: pointer;
+  color: #ddd;
+}

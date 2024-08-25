@@ -1,67 +1,84 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import { Playlist } from "./Components/Playlist/Playlist";
 import { SearchBar } from "./Components/SearchBar/SearchBar";
 import { SearchResults } from "./Components/SearchResults/SearchResults";
 import { Spotify } from "./helpers/Spotify";
+import { LogInButton } from "./Components/LogInButton/LogInButton";
 
 function App() {
-	const [playlistName, setPlaylistName] = useState("");
-	const [searchResults, setSearchResults] = useState([]);
-	const [playlistTracks, setPlaylistTracks] = useState([]);
+  const [playlistName, setPlaylistName] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [playlistTracks, setPlaylistTracks] = useState([]);
+  const [logged, setLogged] = useState();
 
-	function handleNameChange(e) {
-		setPlaylistName(e.target.value);
-	}
+  function handleNameChange({ target }) {
+    setPlaylistName(target.value);
+  }
 
-	function handleAdd({ target }) {
-		const targetID = target.dataset.id;
+  function handleAdd({ target }) {
+    const targetID = target.dataset.id;
 
-		//verificar si el id del item clickeado coincide con alguno que ya este en la lista:
-		if (playlistTracks.some((track) => track.id == targetID)) return;
+    //verificar si el id del item clickeado coincide con alguno que ya este en la lista:
+    if (playlistTracks.some((track) => track.id == targetID)) return;
 
-		const trackToAdd = searchResults.filter((track) => track.id == targetID);
-		//sino agrega la cancion al playlistTracks
-		setPlaylistTracks((prev) => [...prev, ...trackToAdd]);
-	}
+    const trackToAdd = searchResults.filter((track) => track.id == targetID);
 
-	function handleRemove({ target }) {
-		const targetID = target.dataset.id;
+    //sino agrega la cancion al playlistTracks
+    setPlaylistTracks((prev) => [...prev, ...trackToAdd]);
+  }
 
-		setPlaylistTracks((prev) => [
-			...playlistTracks.filter((track) => track.id != targetID),
-		]);
-	}
+  function handleRemove({ target }) {
+    const targetID = target.dataset.id;
 
-	function handleOnSearch(term) {
-		Spotify.search(term).then((res) => setSearchResults(res));
-	}
+    setPlaylistTracks((prev) => [
+      ...playlistTracks.filter((track) => track.id != targetID),
+    ]);
+  }
 
-	function handleSave() {
-		const playlistUris = playlistTracks.map((track) => track.uri);
+  function handleOnSearch(term) {
+    Spotify.search(term).then((res) => setSearchResults(res));
+  }
 
-		Spotify.savePlaylist(playlistName, "", playlistUris);
+  function handleSave() {
+    const playlistUris = playlistTracks.map((track) => track.uri);
+    if (!playlistName || playlistName == "New Playlist" || !playlistUris.length)
+      return;
 
-		setPlaylistName("");
-		setPlaylistTracks([]);
-	}
+    Spotify.savePlaylist(playlistName, "", playlistUris);
 
-	return (
-		<main>
-			<h1>Jammming</h1>
-			<SearchBar onSearch={handleOnSearch} />
-			<section>
-				<SearchResults searchResults={searchResults} onAdd={handleAdd} />
-				<Playlist
-					playlistName={playlistName}
-					onNameChange={handleNameChange}
-					playlistTracks={playlistTracks}
-					onRemove={handleRemove}
-					onSave={handleSave}
-				/>
-			</section>
-		</main>
-	);
+    setPlaylistName("");
+    setPlaylistTracks([]);
+  }
+
+  function handleLogIn() {
+    Spotify.logIn();
+  }
+
+  //effect p saber si el user se logeo y tengo el token disponible
+  useEffect(() => {
+    if (/access_token/.test(window.location.href)) {
+      setLogged(true);
+    }
+  }, []);
+
+  return (
+    <main>
+      <h1>Jammming</h1>
+      <LogInButton logged={logged} onLogIn={handleLogIn} />
+      <SearchBar onSearch={handleOnSearch} logged={logged} />
+      <section>
+        <SearchResults searchResults={searchResults} onAdd={handleAdd} />
+        <Playlist
+          playlistName={playlistName}
+          onNameChange={handleNameChange}
+          playlistTracks={playlistTracks}
+          onRemove={handleRemove}
+          onSave={handleSave}
+        />
+      </section>
+    </main>
+  );
 }
 
 export default App;

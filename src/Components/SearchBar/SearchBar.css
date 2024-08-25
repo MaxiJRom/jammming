@@ -1,37 +1,44 @@
 form {
-	margin-block: 2rem;
+  margin-block: 2rem;
 
-	* {
-		padding: 0.5rem 1.5rem;
-		border-radius: 0.5rem;
-		border: 0;
-	}
+  * {
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    border: 0;
+  }
 
-	[type="text"] {
-		margin-inline: 1rem;
-		min-width: 500px;
-		font-size: 0.9rem;
-	}
-	[type="text"]:active,
-	[type="text"]:focus {
-		outline: 0;
-	}
+  [type="text"] {
+    margin-inline: 1rem;
+    min-width: 500px;
+    font-size: 0.9rem;
+  }
 
-	[type="submit"] {
-		background-color: #222;
-		color: #fcfcfc;
-		letter-spacing: 0.1em;
-		font-weight: 500;
-		border: 1px solid transparent;
+  [type="text"]:active,
+  [type="text"]:focus {
+    outline: 0;
+  }
 
-		cursor: pointer;
-		align-self: center;
-	}
+  [type="submit"] {
+    background-color: #503bb8;
+    color: #fcfcfc;
+    font-size: 1rem;
+    font-weight: 900;
+    border: 1px solid transparent;
 
-	[type="submit"]:active,
-	[type="submit"]:hover {
-		/* border: 1px solid #222; */
-		color: #222;
-		background-color: #aaa;
-	}
+    cursor: pointer;
+    align-self: center;
+  }
+
+  [type="submit"]:active,
+  [type="submit"]:hover {
+    /* border: 1px solid #222; */
+    /* color: #222; */
+    background-color: #444;
+  }
+
+  [type="submit"]:disabled {
+    background-color: #aaa;
+    cursor: auto;
+    color: #444;
+  }
 }
