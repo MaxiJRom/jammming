@@ -1,39 +1,37 @@
 .playlist {
-	padding: 0.5rem 1rem;
-	display: flex;
-	flex-direction: column;
-	/* justify-content: space-between; */
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
 
-	.name-input {
-		align-self: center;
-		background-color: transparent;
-		width: 90%;
-		text-align: center;
-		border: 0;
-		font-size: 1.5rem;
-		border-bottom: 1px solid #222;
-	}
+  .name-input {
+    align-self: center;
+    background-color: transparent;
+    width: 90%;
+    text-align: center;
+    border: 0;
+    font-size: 1rem;
+    border-bottom: 1px solid #222;
+  }
 
-	.name-input:active,
-	.name-input:focus {
-		outline: none;
-	}
+  .name-input:active,
+  .name-input:focus {
+    outline: none;
+  }
 
-	.save-button {
-		background-color: #222;
-		color: #fcfcfc;
-		letter-spacing: 0.1em;
-		font-weight: 500;
-		padding: 0.3rem 0.9rem;
-		border: none;
-		cursor: pointer;
-		align-self: center;
-	}
+  .save-button {
+    background-color: #222;
+    color: #fcfcfc;
+    font-weight: 500;
+    padding: 0.3rem 0.9rem;
+    border: none;
+    cursor: pointer;
+    align-self: center;
+  }
 
-	.save-button:active,
-	.save-button:hover {
-		border: 1px solid #222;
-		color: #222;
-		background-color: #aaa;
-	}
+  .save-button:active,
+  .save-button:hover {
+    border: 1px solid #222;
+    color: #222;
+    background-color: #aaa;
+  }
 }

@@ -1,35 +1,35 @@
 .track {
-	border: 1px solid #222;
-	border-radius: 0.5rem;
-	background-color: #ededed;
-	display: flex;
-	overflow: hidden;
+  border: 1px solid #222;
+  border-radius: 0.5rem;
+  background-color: #ededed;
+  display: flex;
+  overflow: hidden;
 }
 
 .track-info {
-	flex: 1;
+  flex: 1;
 
-	.song {
-		font-size: 1rem;
-	}
+  .song {
+    font-size: 1rem;
+  }
 
-	.artist {
-		font-size: 0.9rem;
-	}
+  .artist {
+    font-size: 0.9rem;
+  }
 
-	.album {
-		font-size: 0.9rem;
-	}
+  .album {
+    font-size: 0.9rem;
+  }
 }
 
 .track-button {
-	cursor: pointer;
-	padding-inline: 1rem;
-	font-weight: 900;
-	font-size: 1rem;
-	border: 0;
+  cursor: pointer;
+  padding-inline: 1rem;
+  font-weight: 900;
+  font-size: 1rem;
+  border: 0;
 }
 .track-button:hover {
-	color: #ededed;
-	background-color: #222;
+  color: #ededed;
+  background-color: #222;
 }

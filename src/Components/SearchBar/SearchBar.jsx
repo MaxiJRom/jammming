@@ -15,8 +15,9 @@ export function SearchBar({ onSearch, logged }) {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="search-form">
         <input
+          className="input-text"
           type="text"
           name="search_term"
           id="search_term"
@@ -25,7 +26,12 @@ export function SearchBar({ onSearch, logged }) {
           placeholder="Artista o canción"
           required
         />
-        <input type="submit" value="Buscar" disabled={!logged ? true : false} />
+        <input
+          className="submit-button"
+          type="submit"
+          value="Buscar"
+          disabled={!logged ? true : false}
+        />
       </form>
     </>
   );

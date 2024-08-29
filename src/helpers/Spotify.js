@@ -59,6 +59,8 @@ export const Spotify = {
     const response = await fetch(urlToFetch, options);
     const jsonResponse = await response.json();
 
+    console.log(jsonResponse);
+
     const tracksList = jsonResponse.tracks.items.map((track) => ({
       song_name: track.name,
       artist: track.artists[0].name,
