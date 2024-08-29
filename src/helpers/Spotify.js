@@ -2,7 +2,7 @@ const clientId = "db33c7bfce564b37a783a1700b518ab2";
 // var clientSecret = "28e3a51d54c645dcba8cd79504091b0d";
 // var url = "https://accounts.spotify.com/authorize";
 // const redirectUri = "http://localhost:5173/";
-const redirectUri = "https://main--illustrious-sorbet-502545.netlify.app/";
+const redirectUri = "https://jammming-dev.netlify.app/";
 
 let accessToken;
 
